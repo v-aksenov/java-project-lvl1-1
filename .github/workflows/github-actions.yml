@@ -1,7 +1,0 @@
-name: github-actions
-on: [push]
-jobs:
-  make-install:
-    runs-on: ubuntu-latest
-    steps:  
-      - run: make install
