@@ -3,4 +3,4 @@
 
 <a href="https://codeclimate.com/github/sergye/java-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
-<a href="https://github.com/sergye/java-project-lvl1/actions/workflows/github-actions/badge.svg"/></a>
+[![Actions Status](https://github.com/sergye/java-project-lvl1/workflows/github-actions/badge.svg)](https://github.com/sergye/java-project-lvl1/actions)
