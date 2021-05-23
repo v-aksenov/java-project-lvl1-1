@@ -6,7 +6,7 @@ import java.util.Random;
 public class EvenGame {
     private static final int ATTEMPTS_NUMBER = 3;
 
-    public static void start(user) {
+    public static void start(String user) {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
