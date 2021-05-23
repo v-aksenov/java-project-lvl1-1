@@ -11,29 +11,45 @@ public class EvenGame {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
-            Random random = new Random();
-            int randomNumber = random.nextInt(RANDOM_RANGE);
+            int randomNumber = getRandomNumber();
             System.out.println("Question: " + randomNumber);
-
-            boolean isEven = (randomNumber % 2 == 0) ? true : false;
-
-            String correctAnswer = isEven ? "yes" : "no";
-
-            Scanner scan = new Scanner(System.in);
-            String userAnswer = scan.nextLine();
-
+            String correctAnswer = getCorrectAnswer(randomNumber);
+            String userAnswer = getUserAnswer();
             System.out.println("Your answer: " + userAnswer);
 
             if (userAnswer.equals(correctAnswer)) {
-                System.out.println("Correct!");
-                if (i == ATTEMPTS_NUMBER) {
-                    System.out.println("Congratulations, " + user + "!");
-                }
+                showPositiveResult(i, user);
             } else {
-                System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer);
-                System.out.println("Let's try again, " + user + "!");
+                showNegativeResult(userAnswer, correctAnswer, user);
                 i = ATTEMPTS_NUMBER + 1;
             }
         }
+    }
+
+    private static int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(RANDOM_RANGE);
+    }
+
+    private static String getCorrectAnswer(int number) {
+        boolean isEven = (number % 2 == 0) ? true : false;
+        return isEven ? "yes" : "no";
+    }
+
+    private static String getUserAnswer() {
+        Scanner scan = new Scanner(System.in);
+        return  scan.nextLine();
+    }
+
+    private static void showPositiveResult(int attempt, String user) {
+        System.out.println("Correct!");
+        if (attempt == ATTEMPTS_NUMBER) {
+            System.out.println("Congratulations, " + user + "!");
+        }
+    }
+
+    private static void showNegativeResult(String userAnswer, String correctAnswer, String user) {
+        System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer);
+        System.out.println("Let's try again, " + user + "!");
     }
 }
