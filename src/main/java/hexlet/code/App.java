@@ -15,10 +15,10 @@ public class App {
         System.out.println("Your choice: " + userChoice);
 
         if (userChoice > 0) {
-            Cli.greetGameUser();
+            String user = Cli.greetGameUser();
         }
         if (userChoice == 2) {
-            EvenGame.start();
+            EvenGame.start(user);
         }
     }
 }
