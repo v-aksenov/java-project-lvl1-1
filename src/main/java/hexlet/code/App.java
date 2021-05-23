@@ -17,7 +17,7 @@ public class App {
         String user = userChoice > 0 ? Cli.greetGameUser() : "";
 
         if (userChoice == 2) {
-            EvenGame.start(user);
+            EvenGame.startGame(user);
         }
     }
 }

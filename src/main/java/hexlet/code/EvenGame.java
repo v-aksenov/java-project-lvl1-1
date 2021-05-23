@@ -7,7 +7,7 @@ public class EvenGame {
     private static final int ATTEMPTS_NUMBER = 3;
     private static final int RANDOM_RANGE = 100;
 
-    public static void start(String user) {
+    public static void startGame(String user) {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
