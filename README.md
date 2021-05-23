@@ -3,4 +3,6 @@
 
 <a href="https://codeclimate.com/github/sergye/java-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
+[![Actions Status](https://github.com/sergye/java-project-lvl1/actions/workflows/ci-gradle.yml/badge.svg)](https://github.com/sergye/java-project-lvl1/actions)
+
 <a href="https://asciinema.org/a/B9sDh2yenpxJQsB6j3UgDMSKk">See how it works</a>
