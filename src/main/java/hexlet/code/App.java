@@ -6,6 +6,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
+        System.out.println("2 - Even");
         System.out.println("0 - Exit");
 
         Scanner scan = new Scanner(System.in);
@@ -13,8 +14,11 @@ public class App {
 
         System.out.println("Your choice: " + userChoice);
 
-        if (userChoice == 1) {
+        if (userChoice > 0) {
             Cli.greetGameUser();
+        }
+        if (userChoice == 2) {
+            EvenGame.start();
         }
     }
 }
