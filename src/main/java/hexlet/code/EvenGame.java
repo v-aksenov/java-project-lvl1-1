@@ -5,13 +5,14 @@ import java.util.Random;
 
 public class EvenGame {
     private static final int ATTEMPTS_NUMBER = 3;
+    private static final int RANDOM_RANGE = 100;
 
     public static void start(String user) {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
             Random random = new Random();
-            int randomNumber = random.nextInt(100);
+            int randomNumber = random.nextInt(RANDOM_RANGE);
             System.out.println("Question: " + randomNumber);
 
             boolean isEven = (randomNumber % 2 == 0) ? true : false;
