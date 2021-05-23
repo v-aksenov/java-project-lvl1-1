@@ -14,9 +14,8 @@ public class App {
 
         System.out.println("Your choice: " + userChoice);
 
-        if (userChoice > 0) {
-            String user = Cli.greetGameUser();
-        }
+        String user = userChoice > 0 ? Cli.greetGameUser() : "";
+
         if (userChoice == 2) {
             EvenGame.start(user);
         }
