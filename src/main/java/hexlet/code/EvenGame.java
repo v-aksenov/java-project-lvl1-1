@@ -25,8 +25,8 @@ public class EvenGame {
 
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
-                if i = ATTEMPTS_NUMBER {
-                    System.out.println("Congratulations, " + user + "!")
+                if (i == ATTEMPTS_NUMBER) {
+                    System.out.println("Congratulations, " + user + "!");
                 }
             } else {
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer);
