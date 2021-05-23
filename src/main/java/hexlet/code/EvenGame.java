@@ -11,7 +11,7 @@ public class EvenGame {
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
             Random random = new Random();
-            int randomNumber = random.nextInt(100) + 1;
+            int randomNumber = random.nextInt(100);
             System.out.println("Question: " + randomNumber);
 
             boolean isEven = (randomNumber % 2 == 0) ? true : false;
