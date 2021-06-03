@@ -16,6 +16,11 @@ public final class Question {
         item3 = calculatorOperand2;
     }
 
+    Question(String numberGCD1, String numberGCD2) {
+        item1 = numberGCD1;
+        item2 = numberGCD2;
+    }
+
     public String getItem1() {
         return item1;
     }

@@ -11,6 +11,7 @@ public class App {
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
         System.out.println("0 - Exit");
 
         Scanner scan = new Scanner(System.in);
@@ -18,12 +19,11 @@ public class App {
 
         System.out.println("Your choice: " + userChoice);
 
-        Game game = selectGame(userChoice);
-
         if (userChoice > 0) {
             String user = Cli.getUserName();
             System.out.println("Hello, " + user + "!");
             if (userChoice > 1) {
+                Game game = selectGame(userChoice);
                 Engine.startGame(user, game);
             }
         }

@@ -14,6 +14,13 @@ public enum GameSelector {
         public Game select() {
             return new Calculator();
         }
+    },
+
+    GCD {
+        @Override
+        public Game select() {
+            return new GCD();
+        }
     };
 
     public abstract Game select();
