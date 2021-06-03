@@ -5,4 +5,4 @@
 
 [![Actions Status](https://github.com/sergye/java-project-lvl1/actions/workflows/ci-gradle.yml/badge.svg)](https://github.com/sergye/java-project-lvl1/actions)
 
-<a href="https://asciinema.org/a/B9sDh2yenpxJQsB6j3UgDMSKk">See how it works</a>
+<a href="https://asciinema.org/a/ms9VsKSwnO1EWSjvzV5Otj99a">See how it works</a>
