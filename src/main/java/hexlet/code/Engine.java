@@ -1,22 +1,22 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import java.util.Random;
+import hexlet.code.games.Game;
+import hexlet.code.games.Question;
 
-public class EvenGame {
+public class Engine {
     private static final int ATTEMPTS_NUMBER = 3;
-    private static final int RANDOM_RANGE = 100;
 
-    public static void startGame(String user) {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+    public static void startGame(String user, Game game) {
+
+        System.out.println(game.showGameTask());
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
-            int randomNumber = getRandomNumber();
-            System.out.println("Question: " + randomNumber);
-            String correctAnswer = getCorrectAnswer(randomNumber);
+            Question question = game.getQuestion();
+            game.showQuestion(question);
+            String correctAnswer = game.getCorrectAnswer();
             String userAnswer = getUserAnswer();
             System.out.println("Your answer: " + userAnswer);
-
             if (userAnswer.equals(correctAnswer)) {
                 showPositiveResult(i, user);
             } else {
@@ -24,16 +24,6 @@ public class EvenGame {
                 i = ATTEMPTS_NUMBER + 1;
             }
         }
-    }
-
-    private static int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_RANGE);
-    }
-
-    private static String getCorrectAnswer(int number) {
-        boolean isEven = (number % 2 == 0) ? true : false;
-        return isEven ? "yes" : "no";
     }
 
     private static String getUserAnswer() {
@@ -49,7 +39,15 @@ public class EvenGame {
     }
 
     private static void showNegativeResult(String userAnswer, String correctAnswer, String user) {
-        System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer);
+        StringBuilder result = new StringBuilder();
+        result.append("'")
+                .append(userAnswer)
+                .append("'")
+                .append(" is wrong answer ;(. Correct answer was ")
+                .append("'")
+                .append(correctAnswer)
+                .append("'.");
+        System.out.println(result);
         System.out.println("Let's try again, " + user + "!");
     }
 }
