@@ -1,12 +1,16 @@
 package hexlet.code;
 
 import java.util.Scanner;
+import hexlet.code.games.Game;
+import hexlet.code.games.GameSelector;
 
 public class App {
+    private static final int GAME_POINTER = 2;
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
+        System.out.println("3 - Calc");
         System.out.println("0 - Exit");
 
         Scanner scan = new Scanner(System.in);
@@ -14,10 +18,18 @@ public class App {
 
         System.out.println("Your choice: " + userChoice);
 
-        String user = userChoice > 0 ? Cli.greetGameUser() : "";
+        Game game = selectGame(userChoice);
 
-        if (userChoice == 2) {
-            EvenGame.startGame(user);
+        if (userChoice > 0) {
+            String user = Cli.getUserName();
+            System.out.println("Hello, " + user + "!");
+            if (userChoice > 1) {
+                Engine.startGame(user, game);
+            }
         }
+    }
+
+    private static Game selectGame(int gameNumber) {
+        return GameSelector.values()[gameNumber - GAME_POINTER].select();
     }
 }
