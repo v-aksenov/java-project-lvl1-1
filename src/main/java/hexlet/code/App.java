@@ -1,7 +1,7 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import hexlet.code.games.Game;
+import hexlet.code.games.IGame;
 import hexlet.code.games.GameSelector;
 
 public class App {
@@ -26,7 +26,7 @@ public class App {
             String user = getUserName();
             System.out.println("Hello, " + user + "!");
             if (userChoice > 1) {
-                Game game = selectGame(userChoice);
+                IGame game = selectGame(userChoice);
                 Engine.startGame(user, game);
             }
         }
@@ -42,7 +42,7 @@ public class App {
         return userName;
     }
 
-    private static Game selectGame(int gameNumber) {
+    private static IGame selectGame(int gameNumber) {
         return GameSelector.values()[gameNumber - GAME_POINTER].select();
     }
 }

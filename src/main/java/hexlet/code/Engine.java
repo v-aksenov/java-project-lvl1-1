@@ -1,13 +1,13 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import hexlet.code.games.Game;
+import hexlet.code.games.IGame;
 
 public class Engine {
 
     private static final int ATTEMPTS_NUMBER = 3;
 
-    public static void startGame(String user, Game game) {
+    public static void startGame(String user, IGame game) {
 
         System.out.println(game.getGameTask());
 

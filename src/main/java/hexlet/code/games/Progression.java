@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Tools;
 
-public final class Progression extends Game {
+public final class Progression implements IGame {
 
     private static final int MIN_LENGTH = 5;
     private static final int MAX_LENGTH = 10;
@@ -14,13 +14,10 @@ public final class Progression extends Game {
     private int progressionStep;
     private int[] progression;
 
-
-    @Override
     public String getGameTask() {
         return GAME_TASK;
     }
 
-    @Override
     public void setQuestionData() {
         progressionLength = Tools.getRandomNumber(MAX_LENGTH - MIN_LENGTH) + MIN_LENGTH;
         skippedPosition = Tools.getRandomNumber(progressionLength);
@@ -29,7 +26,6 @@ public final class Progression extends Game {
         progression = getProgression(progressionLength, firstElement, progressionStep);
     }
 
-    @Override
     public String getQuestion() {
         StringBuilder question = new StringBuilder();
         question.append("Question: ");
@@ -41,7 +37,6 @@ public final class Progression extends Game {
         return question.toString();
     }
 
-    @Override
     public String getCorrectAnswer() {
         return String.valueOf(progression[skippedPosition]);
     }

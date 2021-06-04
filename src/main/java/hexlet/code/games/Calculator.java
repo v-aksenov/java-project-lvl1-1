@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Tools;
 
-public final class Calculator extends Game {
+public final class Calculator implements IGame {
 
     private int operand1;
     private int operand2;
@@ -11,19 +11,16 @@ public final class Calculator extends Game {
     private static final int OPERATORS_RANDOM_RANGE = 2;
     private static final String GAME_TASK = "What is the result of the expression?";
 
-    @Override
     public String getGameTask() {
         return GAME_TASK;
     }
 
-    @Override
     public void setQuestionData() {
         operand1 = Tools.getRandomNumber(NUMBERS_RANDOM_RANGE);
         operand2 = Tools.getRandomNumber(NUMBERS_RANDOM_RANGE);
         operator = getOperator(OPERATORS_RANDOM_RANGE);
     }
 
-    @Override
     public String getQuestion() {
         StringBuilder question = new StringBuilder();
         question.append("Question: ")
@@ -35,7 +32,6 @@ public final class Calculator extends Game {
         return question.toString();
     }
 
-    @Override
     public String getCorrectAnswer() {
         int mult = operand1 * operand2;
         int sum = operand1 + operand2;

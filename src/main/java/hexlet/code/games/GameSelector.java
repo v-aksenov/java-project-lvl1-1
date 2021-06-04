@@ -4,38 +4,38 @@ public enum GameSelector {
 
     EVEN {
         @Override
-        public Game select() {
+        public IGame select() {
             return new Even();
         }
     },
 
     CALCULATOR {
         @Override
-        public Game select() {
+        public IGame select() {
             return new Calculator();
         }
     },
 
     GCD {
         @Override
-        public Game select() {
+        public IGame select() {
             return new GCD();
         }
     },
 
     PROGRESSION {
         @Override
-        public Game select() {
+        public IGame select() {
             return new Progression();
         }
     },
 
     PRIME {
         @Override
-        public Game select() {
+        public IGame select() {
             return new Prime();
         }
     };
 
-    public abstract Game select();
+    public abstract IGame select();
 }
