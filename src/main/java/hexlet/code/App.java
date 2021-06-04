@@ -6,6 +6,7 @@ import hexlet.code.games.GameSelector;
 
 public class App {
     private static final int GAME_POINTER = 2;
+
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
@@ -21,13 +22,23 @@ public class App {
         System.out.println("Your choice: " + userChoice);
 
         if (userChoice > 0) {
-            String user = Cli.getUserName();
+            String user = getUserName();
             System.out.println("Hello, " + user + "!");
             if (userChoice > 1) {
                 Game game = selectGame(userChoice);
                 Engine.startGame(user, game);
             }
         }
+    }
+
+    public static String getUserName() {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+
+        Scanner scan = new Scanner(System.in);
+        String userName = scan.nextLine();
+
+        return userName;
     }
 
     private static Game selectGame(int gameNumber) {
