@@ -28,6 +28,13 @@ public enum GameSelector {
         public Game select() {
             return new Progression();
         }
+    },
+
+    PRIME {
+        @Override
+        public Game select() {
+            return new Prime();
+        }
     };
 
     public abstract Game select();
