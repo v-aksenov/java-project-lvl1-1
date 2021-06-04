@@ -5,21 +5,23 @@ import hexlet.code.Tools;
 public final class Even extends Game {
 
     private int randomNumber;
+    private static final String GAME_TASK = "Answer 'yes' if number even otherwise answer 'no'.";
+    private static final int RANDOM_RANGE = 100;
+
 
     @Override
-    public String showGameTask() {
-        return "Answer 'yes' if number even otherwise answer 'no'.";
+    public String getGameTask() {
+        return GAME_TASK;
     }
 
     @Override
-    public Question getQuestion() {
-        randomNumber = Tools.getRandomNumber();
-        return new Question(String.valueOf(randomNumber));
+    public void setQuestionData() {
+        randomNumber = Tools.getRandomNumber(RANDOM_RANGE);
     }
 
     @Override
-    public void showQuestion(Question question) {
-        System.out.println("Question: " + question.getItem1());
+    public String getQuestion() {
+        return  "Question: " + String.valueOf(randomNumber);
     }
 
     @Override

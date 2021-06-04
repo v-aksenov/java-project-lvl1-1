@@ -21,6 +21,13 @@ public enum GameSelector {
         public Game select() {
             return new GCD();
         }
+    },
+
+    PROGRESSION {
+        @Override
+        public Game select() {
+            return new Progression();
+        }
     };
 
     public abstract Game select();

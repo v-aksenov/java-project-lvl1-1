@@ -6,24 +6,25 @@ public final class GCD extends Game {
 
     private int number1;
     private int number2;
+    private static final String GAME_TASK = "Find the greatest common divisor of given numbers.";
+    private static final int RANDOM_RANGE = 10;
 
     @Override
-    public String showGameTask() {
-        return "Find the greatest common divisor of given numbers.";
+    public String getGameTask() {
+        return GAME_TASK;
     }
 
     @Override
-    public Question getQuestion() {
-        number1 = Tools.getRandomNumber();
-        number2 = Tools.getRandomNumber();
-        return new Question(String.valueOf(number1), String.valueOf(number2));
+    public void setQuestionData() {
+        number1 = Tools.getRandomNumber(RANDOM_RANGE);
+        number2 = Tools.getRandomNumber(RANDOM_RANGE);
     }
 
     @Override
-    public void showQuestion(Question quest) {
+    public String getQuestion() {
         StringBuilder question = new StringBuilder();
-        question.append("Question: ").append(quest.getItem1()).append(" ").append(quest.getItem2());
-        System.out.println(question);
+        question.append("Question: ").append(number1).append(" ").append(number2);
+        return question.toString();
     }
 
     @Override
