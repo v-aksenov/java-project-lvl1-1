@@ -1,11 +1,8 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import hexlet.code.games.IGame;
-import hexlet.code.games.GameSelector;
 
 public class App {
-    private static final int GAME_POINTER = 2;
 
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
@@ -26,8 +23,7 @@ public class App {
             String user = getUserName();
             System.out.println("Hello, " + user + "!");
             if (userChoice > 1) {
-                IGame game = selectGame(userChoice);
-                Engine.startGame(user, game);
+                Engine.startGame(user, userChoice);
             }
         }
     }
@@ -40,9 +36,5 @@ public class App {
         String userName = scan.nextLine();
 
         return userName;
-    }
-
-    private static IGame selectGame(int gameNumber) {
-        return GameSelector.values()[gameNumber - GAME_POINTER].select();
     }
 }

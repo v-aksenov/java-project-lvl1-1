@@ -1,21 +1,19 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import hexlet.code.games.IGame;
 
 public class Engine {
 
     private static final int ATTEMPTS_NUMBER = 3;
 
-    public static void startGame(String user, IGame game) {
+    public static void startGame(String user, int gameNumber) {
 
-        System.out.println(game.getGameTask());
+        System.out.println(Game.getGameTask(gameNumber));
 
         for (int i = 1; i <= ATTEMPTS_NUMBER; i++) {
-            game.setQuestionData();
-            String question = game.getQuestion();
+            String question = Game.getQuestion(gameNumber);
             System.out.println(question);
-            String correctAnswer = game.getCorrectAnswer();
+            String correctAnswer = Game.getCorrectAnswer(gameNumber);
             String userAnswer = getUserAnswer();
             System.out.println("Your answer: " + userAnswer);
             if (userAnswer.equals(correctAnswer)) {
