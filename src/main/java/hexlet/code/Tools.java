@@ -12,7 +12,7 @@ public class Tools {
         if (q == 0) {
             return p;
         }
-        return gcd(q, p % q);
+        return getGCD(q, p % q);
     }
 
     public static boolean isPrime(int num) {
