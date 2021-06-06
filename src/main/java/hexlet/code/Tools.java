@@ -8,11 +8,11 @@ public class Tools {
         return new Random().nextInt(range);
     }
 
-    public static int getGCD(int a, int b) {
-        if (a == b) {
-            return a;
+    public static int getGCD(int p, int q) {
+        if (q == 0) {
+            return p;
         }
-        return (a < b) ? getGCD(a, b - a) : getGCD(b, a - b);
+        return gcd(q, p % q);
     }
 
     public static boolean isPrime(int num) {
