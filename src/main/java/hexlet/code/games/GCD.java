@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Tools;
+import hexlet.code.Engine;
 
 public final class GCD {
 
@@ -14,19 +14,25 @@ public final class GCD {
     }
 
     public static String getQuestion() {
-        setQuestionData();
-        StringBuilder question = new StringBuilder();
-        question.append("Question: ").append(number1).append(" ").append(number2);
-        return question.toString();
+        String question = String.format("Question: %s" + " %s",
+                String.valueOf(number1), String.valueOf(number2));
+        return question;
     }
 
     public static String getCorrectAnswer() {
-        int result = Tools.getGCD(number1, number2);
+        int result = getGCD(number1, number2);
         return String.valueOf(result);
     }
 
-    private static void setQuestionData() {
-        number1 = Tools.getRandomNumber(RANDOM_RANGE);
-        number2 = Tools.getRandomNumber(RANDOM_RANGE);
+    public static void setQuestionData() {
+        number1 = Engine.getRandomNumber(RANDOM_RANGE);
+        number2 = Engine.getRandomNumber(RANDOM_RANGE);
+    }
+
+    private static int getGCD(int p, int q) {
+        if (q == 0) {
+            return p;
+        }
+        return getGCD(q, p % q);
     }
 }

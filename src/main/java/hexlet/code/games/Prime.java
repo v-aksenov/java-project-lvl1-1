@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Tools;
+import hexlet.code.Engine;
 
 public final class Prime {
 
@@ -13,15 +13,26 @@ public final class Prime {
     }
 
     public static String getQuestion() {
-        setQuestionData();
         return  "Question: " + String.valueOf(randomNumber);
     }
 
     public static String getCorrectAnswer() {
-        return Tools.isPrime(randomNumber) ? "yes" : "no";
+        return isPrime(randomNumber) ? "yes" : "no";
     }
 
-    private static void setQuestionData() {
-        randomNumber = Tools.getRandomNumber(RANDOM_RANGE);
+    public static void setQuestionData() {
+        randomNumber = Engine.getRandomNumber(RANDOM_RANGE);
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

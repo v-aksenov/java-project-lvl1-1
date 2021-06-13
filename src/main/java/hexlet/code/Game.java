@@ -14,6 +14,28 @@ public class Game {
     private static final int PROGRESSION = 5;
     private static final int PRIME = 6;
 
+
+    public static void setQuestionData(int gameNumber) {
+        switch (gameNumber) {
+            case EVEN:
+                Even.setQuestionData();
+                break;
+            case CALCULATOR:
+                Calculator.setQuestionData();
+                break;
+            case GREAT_CD:
+                GCD.setQuestionData();
+                break;
+            case PROGRESSION:
+                Progression.setQuestionData();
+                break;
+            case PRIME:
+                Prime.setQuestionData();
+                break;
+            default: throw new IllegalArgumentException("getGameTask: Unsupported game id#" + gameNumber);
+        }
+    }
+
     public static String getGameTask(int gameNumber) {
         switch (gameNumber) {
             case EVEN: return Even.getGameTask();

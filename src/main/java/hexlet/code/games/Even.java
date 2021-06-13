@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Tools;
+import hexlet.code.Engine;
 
 public final class Even {
 
@@ -13,16 +13,18 @@ public final class Even {
     }
 
     public static String getQuestion() {
-        setQuestionData();
         return  "Question: " + String.valueOf(randomNumber);
     }
 
     public static String getCorrectAnswer() {
-        boolean isEven = (randomNumber % 2 == 0) ? true : false;
-        return isEven ? "yes" : "no";
+        return isEven(randomNumber) ? "yes" : "no";
     }
 
-    private static void setQuestionData() {
-        randomNumber = Tools.getRandomNumber(RANDOM_RANGE);
+    public static void setQuestionData() {
+        randomNumber = Engine.getRandomNumber(RANDOM_RANGE);
+    }
+
+    private  static boolean isEven(int number) {
+        return (number % 2 == 0) ? true : false;
     }
 }

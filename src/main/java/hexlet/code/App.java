@@ -20,21 +20,11 @@ public class App {
         System.out.println("Your choice: " + userChoice);
 
         if (userChoice > 0) {
-            String user = getUserName();
+            String user = Cli.getUserName();
             System.out.println("Hello, " + user + "!");
             if (userChoice > 1) {
                 Engine.startGame(user, userChoice);
             }
         }
-    }
-
-    public static String getUserName() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-
-        Scanner scan = new Scanner(System.in);
-        String userName = scan.nextLine();
-
-        return userName;
     }
 }

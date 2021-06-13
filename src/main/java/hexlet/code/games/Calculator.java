@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Tools;
+import hexlet.code.Engine;
 
 public final class Calculator {
 
@@ -16,40 +16,33 @@ public final class Calculator {
     }
 
     public static String getQuestion() {
-        setQuestionData();
-        StringBuilder question = new StringBuilder();
-        question.append("Question: ")
-                .append(String.valueOf(operand1))
-                .append(" ")
-                .append(operator)
-                .append(" ")
-                .append(String.valueOf(operand2));
+        String question = String.format("Question: %s" + " %s" + " %s",
+                String.valueOf(operand1), operator, String.valueOf(operand2));
         return question.toString();
     }
 
     public static String getCorrectAnswer() {
-        int mult = operand1 * operand2;
-        int sum = operand1 + operand2;
-        int diff = operand1 - operand2;
-        if (operator.equals("*")) {
-            return String.valueOf(mult);
-        } else {
-            return operator.equals("+") ? String.valueOf(sum) : String.valueOf(diff);
+        switch (operator) {
+            case "+": return String.valueOf(operand1 + operand2);
+            case "-": return String.valueOf(operand1 - operand2);
+            case "*": return String.valueOf(operand1 * operand2);
+            default: throw new IllegalArgumentException("Unsupported operator: " + operator);
         }
     }
 
-    private static void setQuestionData() {
-        operand1 = Tools.getRandomNumber(NUMBERS_RANDOM_RANGE);
-        operand2 = Tools.getRandomNumber(NUMBERS_RANDOM_RANGE);
+    public static void setQuestionData() {
+        operand1 = Engine.getRandomNumber(NUMBERS_RANDOM_RANGE);
+        operand2 = Engine.getRandomNumber(NUMBERS_RANDOM_RANGE);
         operator = getOperator(OPERATORS_RANDOM_RANGE);
     }
 
     private static String getOperator(int range) {
-        int random = Tools.getRandomNumber(OPERATORS_RANDOM_RANGE);
-        if (random == 0) {
-            return "*";
-        } else {
-            return random == 1  ? "+" : "-";
+        int random = Engine.getRandomNumber(OPERATORS_RANDOM_RANGE);
+        switch (random) {
+            case 0: return "*";
+            case 1: return "+";
+            case 2: return "-";
+            default: throw new IllegalArgumentException("Operator selection error: " + random);
         }
     }
 }
