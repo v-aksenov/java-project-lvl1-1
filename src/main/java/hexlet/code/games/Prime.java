@@ -5,23 +5,33 @@ import hexlet.code.Engine;
 public final class Prime {
 
     private static int randomNumber;
+    private static String question;
+    private static String correctAnswer;
     private static final String GAME_TASK = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    private static final int RANDOM_RANGE = 100;
 
-    public static String getGameTask() {
-        return GAME_TASK;
+
+    public static void startGame(String user) {
+        for (int i = 1; i <= Engine.ATTEMPTS_NUMBER; i++) {
+            setQuestionData();
+            question = getQuestion();
+            correctAnswer = getCorrectAnswer();
+            boolean isCorrect = Engine.play(i, user, GAME_TASK, question, correctAnswer);
+            if (!isCorrect) {
+                return;
+            }
+        }
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         return  "Question: " + String.valueOf(randomNumber);
     }
 
-    public static String getCorrectAnswer() {
+    private static String getCorrectAnswer() {
         return isPrime(randomNumber) ? "yes" : "no";
     }
 
-    public static void setQuestionData() {
-        randomNumber = Engine.getRandomNumber(RANDOM_RANGE);
+    private static void setQuestionData() {
+        randomNumber = Engine.getRandomNumber(Engine.RANDOM_RANGE);
     }
 
     private static boolean isPrime(int num) {

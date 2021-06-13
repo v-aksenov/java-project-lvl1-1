@@ -7,31 +7,41 @@ public final class Progression {
     private static final int MIN_LENGTH = 5;
     private static final int MAX_LENGTH = 10;
     private static final String GAME_TASK = "What number is missing in the progression?";
-    private static final int RANDOM_RANGE = 10;
     private static int progressionLength;
     private static int skippedPosition;
     private static int firstElement;
     private static int progressionStep;
     private static int[] progression;
+    private static String question;
+    private static String correctAnswer;
 
-    public static String getGameTask() {
-        return GAME_TASK;
+
+    public static void startGame(String user) {
+        for (int i = 1; i <= Engine.ATTEMPTS_NUMBER; i++) {
+            setQuestionData();
+            question = getQuestion();
+            correctAnswer = getCorrectAnswer();
+            boolean isCorrect = Engine.play(i, user, GAME_TASK, question, correctAnswer);
+            if (!isCorrect) {
+                return;
+            }
+        }
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         String sequence = getSequence();
         return "Question: " + sequence;
     }
 
-    public static String getCorrectAnswer() {
+    private static String getCorrectAnswer() {
         return String.valueOf(progression[skippedPosition]);
     }
 
-    public static void setQuestionData() {
+    private static void setQuestionData() {
         progressionLength = Engine.getRandomNumber(MAX_LENGTH - MIN_LENGTH) + MIN_LENGTH;
         skippedPosition = Engine.getRandomNumber(progressionLength);
-        firstElement = Engine.getRandomNumber(RANDOM_RANGE);
-        progressionStep = Engine.getRandomNumber(RANDOM_RANGE);
+        firstElement = Engine.getRandomNumber(Engine.RANDOM_RANGE);
+        progressionStep = Engine.getRandomNumber(Engine.RANDOM_RANGE);
         progression = getProgression(progressionLength, firstElement, progressionStep);
     }
 

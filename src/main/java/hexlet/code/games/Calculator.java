@@ -7,18 +7,27 @@ public final class Calculator {
     private static int operand1;
     private static int operand2;
     private static String operator;
-    private static final int NUMBERS_RANDOM_RANGE = 10;
+    private static String question;
+    private static String correctAnswer;
     private static final int OPERATORS_RANDOM_RANGE = 2;
     private static final String GAME_TASK = "What is the result of the expression?";
 
-    public static String getGameTask() {
-        return GAME_TASK;
+    public static void startGame(String user) {
+        for (int i = 1; i <= Engine.ATTEMPTS_NUMBER; i++) {
+            setQuestionData();
+            question = getQuestion();
+            correctAnswer = getCorrectAnswer();
+            boolean isCorrect = Engine.play(i, user, GAME_TASK, question, correctAnswer);
+            if (!isCorrect) {
+                return;
+            }
+        }
     }
 
     public static String getQuestion() {
-        String question = String.format("Question: %s" + " %s" + " %s",
+        String quest = String.format("Question: %s" + " %s" + " %s",
                 String.valueOf(operand1), operator, String.valueOf(operand2));
-        return question.toString();
+        return quest;
     }
 
     public static String getCorrectAnswer() {
@@ -31,8 +40,8 @@ public final class Calculator {
     }
 
     public static void setQuestionData() {
-        operand1 = Engine.getRandomNumber(NUMBERS_RANDOM_RANGE);
-        operand2 = Engine.getRandomNumber(NUMBERS_RANDOM_RANGE);
+        operand1 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
+        operand2 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
         operator = getOperator(OPERATORS_RANDOM_RANGE);
     }
 
