@@ -24,13 +24,13 @@ public final class Calculator {
         }
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         String quest = String.format("Question: %s" + " %s" + " %s",
                 String.valueOf(operand1), operator, String.valueOf(operand2));
         return quest;
     }
 
-    public static String getCorrectAnswer() {
+    private static String getCorrectAnswer() {
         switch (operator) {
             case "+": return String.valueOf(operand1 + operand2);
             case "-": return String.valueOf(operand1 - operand2);
@@ -39,7 +39,7 @@ public final class Calculator {
         }
     }
 
-    public static void setQuestionData() {
+    private static void setQuestionData() {
         operand1 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
         operand2 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
         operator = getOperator(OPERATORS_RANDOM_RANGE);
