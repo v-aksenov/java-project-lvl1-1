@@ -13,11 +13,11 @@ public final class Even {
         setQuestionData();
         question = getQuestion();
         correctAnswer = getCorrectAnswer();
-        boolean isCorrect = Engine.play(attempt, user, GAME_TASK, question, correctAnswer);
-        if (!isCorrect) {
-            return;
-        } else {
+        boolean isUserAnswerCorrect = Engine.play(attempt, user, GAME_TASK, question, correctAnswer);
+        if (isUserAnswerCorrect) {
             startGame(user, attempt + 1);
+        } else {
+            return;
         }
     }
 
