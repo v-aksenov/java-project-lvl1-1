@@ -14,6 +14,7 @@ public class App {
     private static final int GREAT_CD = 4;
     private static final int PROGRESSION = 5;
     private static final int PRIME = 6;
+    private static final int FIRST_ATTEMPT = 1;
 
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
@@ -36,19 +37,19 @@ public class App {
             if (userChoice > 1) {
                 switch (userChoice) {
                     case EVEN:
-                        Even.startGame(user);
+                        Even.startGame(user, FIRST_ATTEMPT);
                         break;
                     case CALCULATOR:
-                        Calculator.startGame(user);
+                        Calculator.startGame(user, FIRST_ATTEMPT);
                         break;
                     case GREAT_CD:
-                        GCD.startGame(user);
+                        GCD.startGame(user, FIRST_ATTEMPT);
                         break;
                     case PROGRESSION:
-                        Progression.startGame(user);
+                        Progression.startGame(user, FIRST_ATTEMPT);
                         break;
                     case PRIME:
-                        Prime.startGame(user);
+                        Prime.startGame(user, FIRST_ATTEMPT);
                         break;
                     default: throw new IllegalArgumentException("Unsupported game id#" + userChoice);
                 }

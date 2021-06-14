@@ -20,7 +20,7 @@ public class Engine {
         System.out.println(YOUR_ANSWER + userAnswer);
         if (userAnswer.equals(correctAnswer)) {
             showPositiveResult(attempt, user);
-            return true;
+            return (attempt < ATTEMPTS_NUMBER) ? true : false;
         } else {
             showNegativeResult(userAnswer, correctAnswer, user);
             return false;

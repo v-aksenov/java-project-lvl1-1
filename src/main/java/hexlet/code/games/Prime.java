@@ -10,15 +10,15 @@ public final class Prime {
     private static final String GAME_TASK = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
 
-    public static void startGame(String user) {
-        for (int i = 1; i <= Engine.ATTEMPTS_NUMBER; i++) {
-            setQuestionData();
-            question = getQuestion();
-            correctAnswer = getCorrectAnswer();
-            boolean isCorrect = Engine.play(i, user, GAME_TASK, question, correctAnswer);
-            if (!isCorrect) {
-                return;
-            }
+    public static void startGame(String user, int attempt) {
+        setQuestionData();
+        question = getQuestion();
+        correctAnswer = getCorrectAnswer();
+        boolean isCorrect = Engine.play(attempt, user, GAME_TASK, question, correctAnswer);
+        if (!isCorrect) {
+            return;
+        } else {
+            startGame(user, attempt + 1);
         }
     }
 
