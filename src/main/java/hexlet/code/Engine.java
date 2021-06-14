@@ -14,7 +14,9 @@ public class Engine {
     private static final String TRY_AGAIN = "Let's try again, ";
 
     public static boolean play(int attempt, String user, String gameTask, String question, String correctAnswer) {
-        System.out.println(gameTask);
+        if (attempt == 1) {
+            System.out.println(gameTask);
+        }
         System.out.println(question);
         String userAnswer = getUserAnswer();
         System.out.println(YOUR_ANSWER + userAnswer);
