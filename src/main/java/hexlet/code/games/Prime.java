@@ -10,13 +10,13 @@ public final class Prime {
     private static final String GAME_TASK = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
 
-    public static void startGame(String user, int attempt) {
+    public static void play(String user, int attempt) {
         setQuestionData();
         question = getQuestion();
         correctAnswer = getCorrectAnswer();
-        boolean isUserAnswerCorrect = Engine.play(attempt, user, GAME_TASK, question, correctAnswer);
+        boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
         if (isUserAnswerCorrect) {
-            startGame(user, attempt + 1);
+            play(user, attempt + 1);
         } else {
             return;
         }

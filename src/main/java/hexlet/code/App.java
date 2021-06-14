@@ -37,19 +37,19 @@ public class App {
             if (userChoice > 1) {
                 switch (userChoice) {
                     case EVEN:
-                        Even.startGame(user, FIRST_ATTEMPT);
+                        Even.play(user, FIRST_ATTEMPT);
                         break;
                     case CALCULATOR:
-                        Calculator.startGame(user, FIRST_ATTEMPT);
+                        Calculator.play(user, FIRST_ATTEMPT);
                         break;
                     case GREAT_CD:
-                        GCD.startGame(user, FIRST_ATTEMPT);
+                        GCD.play(user, FIRST_ATTEMPT);
                         break;
                     case PROGRESSION:
-                        Progression.startGame(user, FIRST_ATTEMPT);
+                        Progression.play(user, FIRST_ATTEMPT);
                         break;
                     case PRIME:
-                        Prime.startGame(user, FIRST_ATTEMPT);
+                        Prime.play(user, FIRST_ATTEMPT);
                         break;
                     default: throw new IllegalArgumentException("Unsupported game id#" + userChoice);
                 }
