@@ -11,6 +11,7 @@ public final class Calculator {
     private static String correctAnswer;
     private static final int OPERATORS_RANDOM_RANGE = 2;
     private static final String GAME_TASK = "What is the result of the expression?";
+    private static final String QUESTION = Engine.QUESTION + "%s %s";
 
     public static void play(String user, int attempt) {
         setQuestionData();
@@ -19,15 +20,11 @@ public final class Calculator {
         boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
         if (isUserAnswerCorrect) {
             play(user, attempt + 1);
-        } else {
-            return;
         }
     }
 
     private static String getQuestion() {
-        String quest = String.format("Question: %s" + " %s" + " %s",
-                String.valueOf(operand1), operator, String.valueOf(operand2));
-        return quest;
+        return String.format(QUESTION, operand1, operator, operand2);
     }
 
     private static String getCorrectAnswer() {
@@ -42,10 +39,10 @@ public final class Calculator {
     private static void setQuestionData() {
         operand1 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
         operand2 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
-        operator = getOperator(OPERATORS_RANDOM_RANGE);
+        operator = getOperator();
     }
 
-    private static String getOperator(int range) {
+    private static String getOperator() {
         int random = Engine.getRandomNumber(OPERATORS_RANDOM_RANGE);
         switch (random) {
             case 0: return "*";

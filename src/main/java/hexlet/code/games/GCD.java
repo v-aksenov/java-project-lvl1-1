@@ -9,6 +9,7 @@ public final class GCD {
     private static String question;
     private static String correctAnswer;
     private static final String GAME_TASK = "Find the greatest common divisor of given numbers.";
+    private static final String QUESTION = Engine.QUESTION + "%s";
 
 
     public static void play(String user, int attempt) {
@@ -18,14 +19,11 @@ public final class GCD {
         boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
         if (isUserAnswerCorrect) {
             play(user, attempt + 1);
-        } else {
-            return;
         }
     }
 
     private static String getQuestion() {
-        String quest = String.format("Question: %s" + " %s", String.valueOf(number1), String.valueOf(number2));
-        return quest;
+        return String.format(QUESTION, number1, number2);
     }
 
     private static String getCorrectAnswer() {

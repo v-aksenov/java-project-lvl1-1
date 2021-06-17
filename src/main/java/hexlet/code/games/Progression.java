@@ -23,14 +23,12 @@ public final class Progression {
         boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
         if (isUserAnswerCorrect) {
             play(user, attempt + 1);
-        } else {
-            return;
         }
     }
 
     private static String getQuestion() {
         String sequence = getSequence();
-        return "Question: " + sequence;
+        return String.format(Engine.QUESTION, sequence);
     }
 
     private static String getCorrectAnswer() {
@@ -42,10 +40,10 @@ public final class Progression {
         skippedPosition = Engine.getRandomNumber(progressionLength);
         firstElement = Engine.getRandomNumber(Engine.RANDOM_RANGE);
         progressionStep = Engine.getRandomNumber(Engine.RANDOM_RANGE);
-        progression = getProgression(progressionLength, firstElement, progressionStep);
+        progression = getProgression(firstElement, progressionStep);
     }
 
-    private static int[] getProgression(int length, int first, int step) {
+    private static int[] getProgression(int first, int step) {
         int[] sequence = new int[progressionLength];
         sequence[0] = first;
         for (int i = 1; i < progressionLength; i++) {

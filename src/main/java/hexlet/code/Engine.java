@@ -7,24 +7,27 @@ public class Engine {
 
     public static final int ATTEMPTS_NUMBER = 3;
     public static final int RANDOM_RANGE = 10;
+    public static final String QUESTION = "Question: %s ";
     private static final String YOUR_ANSWER = "Your answer: ";
     private static final String CORRECT = "Correct!";
-    private static final String CONGRATS = "Congratulations, ";
-    private static final String WRONG_ANSWER = " is wrong answer ;(. Correct answer was ";
-    private static final String TRY_AGAIN = "Let's try again, ";
+    private static final String CONGRATS = "Congratulations, %s!";
+    private static final String WRONG_ANSWER = "'%s' is wrong answer ;(. Correct answer was '%s'";
+    private static final String TRY_AGAIN = "Let's try again, %s!";
 
     public static boolean start(int attempt, String user, String gameTask, String question, String correctAnswer) {
         if (attempt == 1) {
-            System.out.println(gameTask);
+            showUserMessage(gameTask);
         }
-        System.out.println(question);
+        showUserMessage(question);
         String userAnswer = getUserAnswer();
-        System.out.println(YOUR_ANSWER + userAnswer);
+        showUserMessage(YOUR_ANSWER + userAnswer);
         if (userAnswer.equals(correctAnswer)) {
-            showPositiveResult(attempt, user);
+            String positiveResult = getPositiveResult(attempt, user);
+            showUserMessage(positiveResult);
             return (attempt < ATTEMPTS_NUMBER) ? true : false;
         } else {
-            showNegativeResult(userAnswer, correctAnswer, user);
+            String negativeResult = getNegativeResult(userAnswer, correctAnswer, user);
+            showUserMessage(negativeResult);
             return false;
         }
     }
@@ -38,18 +41,20 @@ public class Engine {
         return  scan.nextLine();
     }
 
-    private static void showPositiveResult(int attempt, String user) {
-        System.out.println(CORRECT);
-        if (attempt == ATTEMPTS_NUMBER) {
-            System.out.println(CONGRATS + user + "!");
-        }
+    private static String getPositiveResult(int attempt, String user) {
+        String positiveResult = String.format(CONGRATS, user);
+        return (attempt == ATTEMPTS_NUMBER) ? String.format("%s\n%s", CORRECT, positiveResult) : CORRECT;
     }
 
-    private static void showNegativeResult(String userAnswer, String correctAnswer, String user) {
-        String result = String.format("'%s" + "'%s" + "'%s" + "'.", userAnswer, WRONG_ANSWER, correctAnswer);
-        System.out.println(result);
-        System.out.println(TRY_AGAIN + user + "!");
+    private static String getNegativeResult(String userAnswer, String correctAnswer, String user) {
+        String wrongAnswer = String.format(WRONG_ANSWER, userAnswer, correctAnswer);
+        String goodbye = String.format(TRY_AGAIN, user);
+        String negativeResult = String.format("%s\n%s", wrongAnswer, goodbye);
+        return negativeResult;
     }
 
+    private static void showUserMessage(String userMessage) {
+        System.out.println(userMessage);
+    }
 
 }

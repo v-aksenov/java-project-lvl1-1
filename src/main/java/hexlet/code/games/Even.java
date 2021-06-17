@@ -16,13 +16,11 @@ public final class Even {
         boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
         if (isUserAnswerCorrect) {
             play(user, attempt + 1);
-        } else {
-            return;
         }
     }
 
     private static String getQuestion() {
-        return  "Question: " + String.valueOf(randomNumber);
+        return String.format(Engine.QUESTION, randomNumber);
     }
 
     private static String getCorrectAnswer() {
@@ -34,6 +32,6 @@ public final class Even {
     }
 
     private  static boolean isEven(int number) {
-        return (number % 2 == 0) ? true : false;
+        return number % 2 == 0;
     }
 }

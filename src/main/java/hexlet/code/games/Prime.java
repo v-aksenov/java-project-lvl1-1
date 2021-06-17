@@ -17,13 +17,11 @@ public final class Prime {
         boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
         if (isUserAnswerCorrect) {
             play(user, attempt + 1);
-        } else {
-            return;
         }
     }
 
     private static String getQuestion() {
-        return  "Question: " + String.valueOf(randomNumber);
+        return String.format(Engine.QUESTION, randomNumber);
     }
 
     private static String getCorrectAnswer() {
