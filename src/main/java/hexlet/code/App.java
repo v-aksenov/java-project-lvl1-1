@@ -9,12 +9,12 @@ import hexlet.code.games.Prime;
 
 public class App {
 
+    private static final int GREET = 1;
     private static final int EVEN = 2;
     private static final int CALCULATOR = 3;
     private static final int GREAT_CD = 4;
     private static final int PROGRESSION = 5;
     private static final int PRIME = 6;
-    private static final int FIRST_ATTEMPT = 1;
 
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
@@ -31,29 +31,26 @@ public class App {
 
         System.out.println("Your choice: " + userChoice);
 
-        if (userChoice > 0) {
-            String user = Cli.getUserName();
-            System.out.println("Hello, " + user + "!");
-            if (userChoice > 1) {
-                switch (userChoice) {
-                    case EVEN:
-                        Even.play(user, FIRST_ATTEMPT);
-                        break;
-                    case CALCULATOR:
-                        Calculator.play(user, FIRST_ATTEMPT);
-                        break;
-                    case GREAT_CD:
-                        GCD.play(user, FIRST_ATTEMPT);
-                        break;
-                    case PROGRESSION:
-                        Progression.play(user, FIRST_ATTEMPT);
-                        break;
-                    case PRIME:
-                        Prime.play(user, FIRST_ATTEMPT);
-                        break;
-                    default: throw new IllegalArgumentException("Unsupported game id#" + userChoice);
-                }
-            }
+        switch (userChoice) {
+            case GREET:
+                Engine.start("Greet", new String[0], new String[0]);
+                break;
+            case EVEN:
+                Even.play();
+                break;
+            case CALCULATOR:
+                Calculator.play();
+                break;
+            case GREAT_CD:
+                GCD.play();
+                break;
+            case PROGRESSION:
+                Progression.play();
+                break;
+            case PRIME:
+                Prime.play();
+                break;
+            default: throw new IllegalArgumentException("Unsupported game id#" + userChoice);
         }
     }
 }

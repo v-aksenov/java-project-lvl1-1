@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import java.util.Random;
 
 public class Engine {
 
@@ -13,27 +12,40 @@ public class Engine {
     private static final String CONGRATS = "Congratulations, %s!";
     private static final String WRONG_ANSWER = "'%s' is wrong answer ;(. Correct answer was '%s'";
     private static final String TRY_AGAIN = "Let's try again, %s!";
+    private static final String WELCOME = "Welcome to the Brain Games!";
+    private static final String YOUR_NAME = "May I have your name? ";
 
-    public static boolean start(int attempt, String user, String gameTask, String question, String correctAnswer) {
-        if (attempt == 1) {
-            showUserMessage(gameTask);
-        }
-        showUserMessage(question);
-        String userAnswer = getUserAnswer();
-        showUserMessage(YOUR_ANSWER + userAnswer);
-        if (userAnswer.equals(correctAnswer)) {
-            String positiveResult = getPositiveResult(attempt, user);
-            showUserMessage(positiveResult);
-            return (attempt < ATTEMPTS_NUMBER) ? true : false;
-        } else {
-            String negativeResult = getNegativeResult(userAnswer, correctAnswer, user);
-            showUserMessage(negativeResult);
-            return false;
+    public static void start(String gameTask, String[] question, String[] correctAnswer) {
+        showUserMessage(WELCOME);
+        showUserMessage(YOUR_NAME);
+        String user = getUserName();
+        Cli.greetUser(user);
+
+        if (!gameTask.equals("Greet")) {
+            for (int i = 0; i < ATTEMPTS_NUMBER; i++) {
+                if (i == 0) {
+                    showUserMessage(gameTask);
+                }
+                showUserMessage(question[i]);
+                String userAnswer = getUserAnswer();
+                showUserMessage(YOUR_ANSWER + userAnswer);
+
+                if (userAnswer.equals(correctAnswer[i])) {
+                    String positiveResult = getPositiveResult(i + 1, user);
+                    showUserMessage(positiveResult);
+                } else {
+                    String negativeResult = getNegativeResult(userAnswer, correctAnswer[i], user);
+                    showUserMessage(negativeResult);
+                    i = ATTEMPTS_NUMBER;
+                }
+            }
         }
     }
 
-    public static int getRandomNumber(int range) {
-        return new Random().nextInt(range);
+    private static String getUserName() {
+        Scanner scan = new Scanner(System.in);
+        String userName = scan.nextLine();
+        return userName;
     }
 
     private static String getUserAnswer() {

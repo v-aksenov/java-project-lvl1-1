@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public final class Progression {
 
@@ -12,18 +13,25 @@ public final class Progression {
     private static int firstElement;
     private static int progressionStep;
     private static int[] progression;
-    private static String question;
-    private static String correctAnswer;
+    private static String[] question = new String[Engine.ATTEMPTS_NUMBER];
+    private static String[] correctAnswer = new String[Engine.ATTEMPTS_NUMBER];
 
 
-    public static void play(String user, int attempt) {
-        setQuestionData();
-        question = getQuestion();
-        correctAnswer = getCorrectAnswer();
-        boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
-        if (isUserAnswerCorrect) {
-            play(user, attempt + 1);
+    public static void play() {
+        for (int i = 0; i < Engine.ATTEMPTS_NUMBER; i++) {
+            setQuestionData();
+            question[i] = getQuestion();
+            correctAnswer[i] = getCorrectAnswer();
         }
+        Engine.start(GAME_TASK, question, correctAnswer);
+    }
+
+    private static void setQuestionData() {
+        progressionLength = Utils.getRandomNumber(MAX_LENGTH - MIN_LENGTH) + MIN_LENGTH;
+        skippedPosition = Utils.getRandomNumber(progressionLength);
+        firstElement = Utils.getRandomNumber(Engine.RANDOM_RANGE);
+        progressionStep = Utils.getRandomNumber(Engine.RANDOM_RANGE);
+        progression = getProgression(firstElement, progressionStep);
     }
 
     private static String getQuestion() {
@@ -35,13 +43,6 @@ public final class Progression {
         return String.valueOf(progression[skippedPosition]);
     }
 
-    private static void setQuestionData() {
-        progressionLength = Engine.getRandomNumber(MAX_LENGTH - MIN_LENGTH) + MIN_LENGTH;
-        skippedPosition = Engine.getRandomNumber(progressionLength);
-        firstElement = Engine.getRandomNumber(Engine.RANDOM_RANGE);
-        progressionStep = Engine.getRandomNumber(Engine.RANDOM_RANGE);
-        progression = getProgression(firstElement, progressionStep);
-    }
 
     private static int[] getProgression(int first, int step) {
         int[] sequence = new int[progressionLength];

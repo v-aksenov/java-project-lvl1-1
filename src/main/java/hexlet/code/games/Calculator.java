@@ -1,26 +1,32 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public final class Calculator {
 
     private static int operand1;
     private static int operand2;
     private static String operator;
-    private static String question;
-    private static String correctAnswer;
+    private static String[] question = new String[Engine.ATTEMPTS_NUMBER];
+    private static String[] correctAnswer = new String[Engine.ATTEMPTS_NUMBER];
     private static final int OPERATORS_RANDOM_RANGE = 2;
     private static final String GAME_TASK = "What is the result of the expression?";
     private static final String QUESTION = Engine.QUESTION + "%s %s";
 
-    public static void play(String user, int attempt) {
-        setQuestionData();
-        question = getQuestion();
-        correctAnswer = getCorrectAnswer();
-        boolean isUserAnswerCorrect = Engine.start(attempt, user, GAME_TASK, question, correctAnswer);
-        if (isUserAnswerCorrect) {
-            play(user, attempt + 1);
+    public static void play() {
+        for (int i = 0; i < Engine.ATTEMPTS_NUMBER; i++) {
+            setQuestionData();
+            question[i] = getQuestion();
+            correctAnswer[i] = getCorrectAnswer();
         }
+        Engine.start(GAME_TASK, question, correctAnswer);
+    }
+
+    private static void setQuestionData() {
+        operand1 = Utils.getRandomNumber(Engine.RANDOM_RANGE);
+        operand2 = Utils.getRandomNumber(Engine.RANDOM_RANGE);
+        operator = getOperator();
     }
 
     private static String getQuestion() {
@@ -36,14 +42,8 @@ public final class Calculator {
         }
     }
 
-    private static void setQuestionData() {
-        operand1 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
-        operand2 = Engine.getRandomNumber(Engine.RANDOM_RANGE);
-        operator = getOperator();
-    }
-
     private static String getOperator() {
-        int random = Engine.getRandomNumber(OPERATORS_RANDOM_RANGE);
+        int random = Utils.getRandomNumber(OPERATORS_RANDOM_RANGE);
         switch (random) {
             case 0: return "*";
             case 1: return "+";
