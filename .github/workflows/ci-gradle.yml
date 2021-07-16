@@ -25,3 +25,4 @@ jobs:
       run: chmod +x gradlew
     - name: Run make build
       run: make build
+
