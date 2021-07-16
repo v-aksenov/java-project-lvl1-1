@@ -21,7 +21,6 @@ public class Engine {
         String user = getUserName();
         Cli.greetUser(user);
 
-        if (!gameTask.equals("Greet")) {
             for (int i = 0; i < ATTEMPTS_NUMBER; i++) {
                 if (i == 0) {
                     showUserMessage(gameTask);
@@ -39,7 +38,6 @@ public class Engine {
                     i = ATTEMPTS_NUMBER;
                 }
             }
-        }
     }
 
     private static String getUserName() {
